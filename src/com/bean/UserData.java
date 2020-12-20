@@ -31,7 +31,5 @@ public class UserData {
         return Password;
     }
 
-    public String getIdentityCard() {
-        return IdentityCard;
-    }
+    public String getIdentityCard() { return IdentityCard; }
 }
