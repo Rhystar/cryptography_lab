@@ -12,9 +12,7 @@ public class DES {
 
     public static final String DES_ALGORITHM = "DES";
 
-    static {
-        Security.addProvider(new BouncyCastleProvider());
-    }
+    static { Security.addProvider(new BouncyCastleProvider()); }
 
     public static String decrypt(String content, String key) {
         Cipher cipher = null;
@@ -56,7 +54,7 @@ public class DES {
         /*对输入值进行规范化整理*/
         src = src.trim().replace(" ", "").toUpperCase(Locale.US);
         //处理值初始化
-        int m = 0, n = 0;
+        int m, n;
         int iLen = src.length() / 2; //计算长度
         byte[] ret = new byte[iLen]; //分配存储空间
         for (int i = 0; i < iLen; i++) {

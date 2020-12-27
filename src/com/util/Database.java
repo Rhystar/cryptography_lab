@@ -16,16 +16,12 @@ public class Database {
         return null;
     }
 
-    public static boolean closeConnection(Connection DatabaseConnection) {
-        if (DatabaseConnection != null) {
-            try {
-                DatabaseConnection.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return true;
+    public static void closeConnection(Connection DatabaseConnection) {
+        try {
+            DatabaseConnection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return false;
     }
 
     public int operateDatabase(Connection DatabaseConnection, String sql) {
