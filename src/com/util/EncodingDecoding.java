@@ -37,6 +37,7 @@ public class EncodingDecoding {
             throw new Exception("公钥数据为空");
         }
     }
+
     public static RSAPrivateKey loadPrivateKeyByStr(String privateKeyStr) throws Exception {
         try {
             byte[] buffer = Base64.getDecoder().decode(privateKeyStr);

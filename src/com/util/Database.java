@@ -24,19 +24,20 @@ public class Database {
         }
     }
 
-    public int operateDatabase(Connection DatabaseConnection, String sql) {
+    public static int operateDatabase(Connection DatabaseConnection, String sql) {
         int i = 0;
         PreparedStatement preparedStatement;
         try {
             preparedStatement = DatabaseConnection.prepareStatement(sql);
             i = preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return i;
     }
 
-    public ResultSet getResultSet(Connection DatabaseConnection, String sql) {
+    public static ResultSet getResultSet(Connection DatabaseConnection, String sql) {
         ResultSet resultSet = null;
         PreparedStatement preparedStatement;
         try {
@@ -46,5 +47,13 @@ public class Database {
             e.printStackTrace();
         }
         return resultSet;
+    }
+
+    public static void closeResultSet(ResultSet resultSet) {
+        try {
+            resultSet.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

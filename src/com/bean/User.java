@@ -1,11 +1,11 @@
 package com.bean;
 
-public class UserData {
+public class User {
     private String Email;
     private String Password;
     private String IdentityCard;
 
-    public UserData(String Email, String Password, String IdentityCard) {
+    public User(String Email, String Password, String IdentityCard) {
         this.Email = Email;
         this.Password = Password;
         this.IdentityCard = IdentityCard;
