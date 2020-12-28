@@ -3,12 +3,10 @@ package com.bean;
 public class User {
     private String Email;
     private String Password;
-    private String IdentityCard;
 
-    public User(String Email, String Password, String IdentityCard) {
+    public User(String Email, String Password) {
         this.Email = Email;
         this.Password = Password;
-        this.IdentityCard = IdentityCard;
     }
 
     public void setEmail(String email) {
@@ -19,10 +17,6 @@ public class User {
         Password = password;
     }
 
-    public void setIdentityCard(String identityCard) {
-        IdentityCard = identityCard;
-    }
-
     public String getEmail() {
         return Email;
     }
@@ -31,5 +25,4 @@ public class User {
         return Password;
     }
 
-    public String getIdentityCard() { return IdentityCard; }
 }

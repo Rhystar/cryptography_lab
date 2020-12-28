@@ -15,13 +15,11 @@ public class UserData {
         PasswordEncryptor passwordEncryptor = new PasswordEncryptor(salt, "sha-256");
         String Email = newUser.getEmail();
         String Password = passwordEncryptor.encode(newUser.getPassword());
-        String IdentityCard = passwordEncryptor.encode(newUser.getIdentityCard());
         Connection DBConnection = getLabConnection();
         String sql = "INSERT INTO userdata (email, password, identity_card, uuid) VALUES ("
+                + salt + ", "
                 + Email + ", "
-                + Password + ", "
-                + IdentityCard + ", "
-                + salt + ");";
+                + Password + ");";
         int flag = operateDatabase(DBConnection, sql);
         closeConnection(DBConnection);
         return flag == 1;
