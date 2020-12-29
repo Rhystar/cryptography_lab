@@ -16,10 +16,10 @@ public class UserData {
         String Email = newUser.getEmail();
         String Password = passwordEncryptor.encode(newUser.getPassword());
         Connection DBConnection = getLabConnection();
-        String sql = "INSERT INTO userdata (email, password, identity_card, uuid) VALUES ("
-                + salt + ", "
-                + Email + ", "
-                + Password + ");";
+        String sql = "INSERT INTO userdata (uuid, email, password) VALUES (" +
+                "'" + salt + "', " +
+                "'" + Email + "', " +
+                "'" + Password + "');";
         int flag = operateDatabase(DBConnection, sql);
         closeConnection(DBConnection);
         return flag == 1;
@@ -31,7 +31,7 @@ public class UserData {
         String encPassword;
         String salt;
         Connection DBConnection = getLabConnection();
-        String sql = "SELECT * form userdata where email='" + Email + "';";
+        String sql = "SELECT * FROM userdata WHERE email='" + Email + "';";
         ResultSet Result = getResultSet(DBConnection, sql);
         try {
             if (Result.next()) {
