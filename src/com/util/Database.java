@@ -12,8 +12,8 @@ public class Database {
             return DatabaseConnection;
         } catch (Exception e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     public static void closeConnection(Connection DatabaseConnection) {
