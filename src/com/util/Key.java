@@ -7,10 +7,8 @@ import java.io.IOException;
 public class Key {
     /**
      * 从文件中输入流中加载密钥
-     *
-     * @throws Exception 加载密钥时产生的异常
      */
-    public static String loadKeyByFile(String file_path) throws Exception {
+    public static String loadKeyByFile(String file_path) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file_path));
             String readLine;
@@ -20,12 +18,9 @@ public class Key {
             }
             br.close();
             return sb.toString();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception("密钥数据流读取错误");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            throw new Exception("密钥输入流为空");
+            return null;
         }
     }
 }
