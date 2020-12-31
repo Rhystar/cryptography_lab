@@ -5,6 +5,7 @@ import com.util.*;
 import com.dao.*;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -12,6 +13,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.util.Base64;
 import java.util.Objects;
 
+@WebServlet("/registerServlet")
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
