@@ -42,22 +42,15 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         User loginUser = new User(username, password);
-        String checkCode = req.getParameter("check_code");
         HttpSession session = req.getSession();
         String checkCode_session = (String) session.getAttribute("checkCode_session");
-        session.removeAttribute("checkCode_session");
         UserData userDao = new UserData();
-        if (checkCode_session != null && checkCode_session.equalsIgnoreCase(checkCode)) { // 判断验证码
-            boolean verified = userDao.verify(loginUser); // 验证用户身份
-            if (verified) {
-                session.setAttribute("username", username);
-                resp.sendRedirect(req.getContextPath() + "/home.jsp");
-            } else {
-                req.setAttribute("login_error", "用户名或密码错误");
-                req.getRequestDispatcher("/index.jsp").forward(req, resp);
-            }
+        boolean verified = userDao.verify(loginUser); // 验证用户身份
+        if (verified) {
+            session.setAttribute("username", username);
+            resp.sendRedirect(req.getContextPath() + "/home.jsp");
         } else {
-            req.setAttribute("checkCode_error", "验证码错误");
+            req.setAttribute("login_error", "用户名或密码错误");
             req.getRequestDispatcher("/index.jsp").forward(req, resp);
         }
     }

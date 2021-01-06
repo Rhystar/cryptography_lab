@@ -87,5 +87,6 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>

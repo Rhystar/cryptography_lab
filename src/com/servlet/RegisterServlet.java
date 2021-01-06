@@ -13,7 +13,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.util.Base64;
 import java.util.Objects;
 
-@WebServlet("/registerServlet")
+@WebServlet(name = "registerServlet", value = "/registerServlet")
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,22 +38,15 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
         User registerUser = new User(username, password);
-        String checkCode = request.getParameter("check_code");
-        HttpSession session = request.getSession();
-        String checkCode_session = (String) session.getAttribute("checkCode_session");
-        session.removeAttribute("checkCode_session");
+        // HttpSession session = request.getSession();
+        // session.removeAttribute("checkCode_session");
         UserData userDao = new UserData();
-        if (checkCode_session != null && checkCode_session.equalsIgnoreCase(checkCode)) {
-            boolean success_register = userDao.register(registerUser);
-            if (!success_register) {
-                request.setAttribute("register_fail_msg", "用户名已存在！");
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            } else {
-                request.setAttribute("register_success_msg", "注册成功");
-                request.getRequestDispatcher("/index.jsp").forward(request, response);
-            }
+        boolean success_register = userDao.register(registerUser);
+        if (!success_register) {
+            request.setAttribute("register_fail_msg", "用户名已存在！");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
         } else {
-            request.setAttribute("register_fail_msg", "验证码错误！");
+            request.setAttribute("register_success_msg", "注册成功");
             request.getRequestDispatcher("/index.jsp").forward(request, response);
         }
     }

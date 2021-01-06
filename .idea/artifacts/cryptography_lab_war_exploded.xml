@@ -7,6 +7,59 @@
         <element id="directory" name="classes">
           <element id="module-output" name="cryptography_lab" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.ejb.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.jms.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-ws.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.servlet.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.resource.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/aopalliance-1.0.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.annotation.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.persistence.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.servlet.jsp.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.transaction.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/bcprov-jdk15on-168.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-logging-1.2.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-fileupload-1.4.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-js-2.4.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-tx-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-aop-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-jms-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-orm-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-oxm-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-web-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/mariadb-java-client-2.7.1.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-core-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-jdbc-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-test-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-beans-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-faces-2.4.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-webmvc-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-fileupload-1.4-tests.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-aspects-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-binding-2.4.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-context-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-webflow-2.4.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-fileupload-1.4-javadoc.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-fileupload-1.4-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-messaging-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-batch-core-2.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-expression-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-instrument-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-js-resources-2.4.0.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/commons-fileupload-1.4-test-sources.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-context-support-5.2.3.RELEASE.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/lib/spring-batch-infrastructure-2.2.6.RELEASE.jar" />
+          <element id="library" level="project" name="Spring-5.2.3.RELEASE" />
+          <element id="library" level="project" name="Spring Webflow-2.4.0" />
+          <element id="library" level="project" name="Spring MVC-5.2.3.RELEASE" />
+          <element id="library" level="project" name="Spring Integration-5.2.3.RELEASE" />
+          <element id="library" level="project" name="Spring Batch-2.2.6" />
+          <element id="library" level="project" name="Spring Web Services-2.0.2" />
+          <element id="library" level="project" name="Spring Data JPA-2.2.4.RELEASE" />
+          <element id="library" level="project" name="Spring Security-5.2.1" />
+        </element>
       </element>
     </root>
   </artifact>
