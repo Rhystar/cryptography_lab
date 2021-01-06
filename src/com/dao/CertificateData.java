@@ -165,4 +165,21 @@ public class CertificateData {
     public List<Certificate> getAllCa() {
         return getCertificates("certificate");
     }
+
+    public Certificate getCa(String SerialNumber) {
+        Connection DBConnection = getLabConnection();
+        String sql = "SELECT * FROM certificate WHERE SerialNumber='" + SerialNumber + "';";
+        ResultSet Result = getResultSet(DBConnection, sql);
+        try {
+            if (Result.next()) {
+                var sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                return new Certificate(SerialNumber, Result.getString("Path"), sdf.parse(Result.getString("NotBefore")), sdf.parse(Result.getString("NotAfter")), Result.getString("Username"));
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
