@@ -42,9 +42,9 @@ public class CertificateData {
     public boolean register(Certificate ca) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Connection DBConnection = getLabConnection();
-        String sql = "INSERT INTO certificate (SerialNumber, Path, NotBefore, NotAfter, Username) VALUES (" +
+        String sql = "INSERT INTO certificate (SerialNumber, Path, NotBefore, NotAfter, User) VALUES (" +
                 "'" + ca.getSerialNumber() + "', " +
-                "'" + ca.getPath() + "', " +
+                "'" + ca.getPath().replaceAll("\\\\","\\\\\\\\") + "', " +
                 "'" + sdf.format(ca.getNotBefore()) + "', " +
                 "'" + sdf.format(ca.getNotAfter()) + "', " +
                 "'" + ca.getUsername() + "');";
@@ -95,12 +95,12 @@ public class CertificateData {
         ResultSet Result = getResultSet(DBConnection, sql);
         try {
             if (Result.next()) {
-                String insert = "INSERT INTO crl (SerialNumber, Path, NotBefore, NotAfter, Username) VALUES (" +
+                String insert = "INSERT INTO crl (SerialNumber, Path, NotBefore, NotAfter, User) VALUES (" +
                         "'" + SerialNumber + "', " +
-                        "'" + Result.getString("Path") + "', " +
+                        "'" + Result.getString("Path").replaceAll("\\\\","\\\\\\\\") + "', " +
                         "'" + Result.getString("NotBefore") + "', " +
                         "'" + Result.getString("NotAfter") + "', " +
-                        "'" + Result.getString("Username") + "');";
+                        "'" + Result.getString("User") + "');";
                 int flag = operateDatabase(DBConnection, insert);
                 return flag == 1;
             } else {
@@ -144,7 +144,7 @@ public class CertificateData {
                         Result.getString("Path"),
                         sdf.parse(Result.getString("NotBefore")),
                         sdf.parse(Result.getString("NotAfter")),
-                        Result.getString("Username")
+                        Result.getString("User")
                 );
                 Crl.add(ca);
             }
@@ -173,7 +173,7 @@ public class CertificateData {
         try {
             if (Result.next()) {
                 var sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                return new Certificate(SerialNumber, Result.getString("Path"), sdf.parse(Result.getString("NotBefore")), sdf.parse(Result.getString("NotAfter")), Result.getString("Username"));
+                return new Certificate(SerialNumber, Result.getString("Path"), sdf.parse(Result.getString("NotBefore")), sdf.parse(Result.getString("NotAfter")), Result.getString("User"));
             } else {
                 return null;
             }

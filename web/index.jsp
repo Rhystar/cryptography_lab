@@ -4,7 +4,7 @@
 <!-- Head -->
 <head>
 
-    <title>哥谭市数字证书认证中心</title>
+    <title>数字证书认证中心</title>
 
     <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +60,7 @@
 <!-- Body -->
 <body>
 
-<h1>哥谭市数字证书认证中心</h1>
+<h1>数字证书认证中心</h1>
 
 <div class="container w3layouts agileits">
 
@@ -71,12 +71,8 @@
             <input type="text" name="sign_username" id="login_sign_username" style="display: none">
             <input type="password" name="password" id="login_password" placeholder="密码" required="">
             <input type="text" name="sign_password" id="login_sign_password" style="display: none">
-            <span><%=request.getAttribute("login_error") == null ?
-                    "" :
-                    request.getAttribute("login_error")%></span>
-            <span><%=request.getAttribute("login_msg") == null ?
-                    "" :
-                    request.getAttribute("login_msg")%></span>
+            <span><%=request.getAttribute("login_error") == null ? "" : request.getAttribute("login_error")%></span>
+            <span><%=request.getAttribute("login_msg") == null ? "" : request.getAttribute("login_msg")%></span>
             <div class="send-button w3layouts agileits">
                 <input type="button" id="login_btn" value="登 录">
             </div>
@@ -87,19 +83,11 @@
     <div class="register w3layouts agileits">
         <h2>注 册</h2>
         <form action="/tw/registerServlet" id="register_form" method="post">
-            <input type="text" name="username" id="register_username" placeholder="用户名"
-                   required="">
-            <input type="text" name="sign_username" id="reg_sign_username"
-                   required="" style="display: none">
-            <input type="password" name="password" id="register_password" placeholder="密码"
-                   required="" onkeyup="CheckIntensity(this.value)">
+            <input type="text" name="username" id="register_username" placeholder="用户名" required="">
+            <input type="text" name="sign_username" id="reg_sign_username" required="" style="display: none">
+            <input type="password" name="password" id="register_password" placeholder="密码" required="" onkeyup="CheckIntensity(this.value)">
             <input type="text" name="sign_password" id="reg_sign_password" style="display: none">
-
-
-
-            <span class="warn"><%=request.getAttribute("register_fail_msg") == null ?
-                    "" :
-                    request.getAttribute("register_fail_msg")%></span>
+            <span class="warn"><%=request.getAttribute("register_fail_msg") == null ? "" : request.getAttribute("register_fail_msg")%></span>
             <table border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 10px">
                 <tr align="center">
                     <td id="pwd_Weak" class="pwd pwd_c"></td>
@@ -114,7 +102,6 @@
         <div class="clear"></div>
     </div>
     <div class="clear"></div>
-
 </div>
 
 
@@ -145,27 +132,13 @@
     });
 
     function reg_encrypt() {
-        var publicKey =
-            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_username = encrypt.encrypt(register_username.value);
         var enc_password = encrypt.encrypt(register_password.value);
         var sign_username = hex_sha256(register_username.value);
         var sign_password = hex_sha256(register_password.value);
-        // var keyHex = CryptoJS.enc.Utf8.parse("6y8SwEs8Fu8YXwvq");
-        // var enc_username = CryptoJS.DES.encrypt(register_username.value, keyHex, {
-        //     mode: CryptoJS.mode.ECB,
-        //     padding: CryptoJS.pad.Pkcs7
-        // });
-        // var enc_password = CryptoJS.DES.encrypt(register_password.value, keyHex, {
-        //     mode: CryptoJS.mode.ECB,
-        //     padding: CryptoJS.pad.Pkcs7
-        // });
-        // var enc_idcard = CryptoJS.DES.encrypt(register_idcard.value, keyHex, {
-        //     mode: CryptoJS.mode.ECB,
-        //     padding: CryptoJS.pad.Pkcs7
-        // });
         register_username.value = enc_username;
         register_password.value = enc_password;
         reg_sign_username.value = sign_username;
@@ -193,15 +166,6 @@
         var enc_password = encrypt.encrypt(login_password.value);
         var sign_username = hex_sha256(login_username.value);
         var sign_password = hex_sha256(login_password.value);
-        // var keyHex = CryptoJS.enc.Utf8.parse("4t8FsfQ8Fv9YXjkg");
-        // var enc_username = CryptoJS.DES.encrypt(login_username.value, keyHex, {
-        //     mode: CryptoJS.mode.ECB,
-        //     padding: CryptoJS.pad.Pkcs7
-        // });
-        // var enc_password = CryptoJS.DES.encrypt(login_password.value, keyHex, {
-        //     mode: CryptoJS.mode.ECB,
-        //     padding: CryptoJS.pad.Pkcs7
-        // });
         login_username.value = enc_username;
         login_password.value = enc_password;
         login_sign_username.value = sign_username;

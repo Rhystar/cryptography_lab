@@ -9,6 +9,7 @@ import com.util.SHADigest;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,31 +24,25 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Objects;
 
+@WebServlet("/revokeCerServlet")
 public class RevokeCerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
-        //        String key = "7c6ffnDSak8YMiVq";
         CertificateData certificateDao = new CertificateData();
-        //        String serial_number = DESUtil.decrypt(request.getParameter("serial_number"), key);
-        //        String revoke_pwd = DESUtil.decrypt(request.getParameter("revoke_pwd"), key);
         String serial_number = request.getParameter("serial_number");
         String revoke_pwd = request.getParameter("revoke_pwd");
         String sign_serial_number = request.getParameter("sign_serial_number");
         String sign_revoke_pwd = request.getParameter("sign_revoke_pwd");
         RSAPrivateKey privateKey;
         try {
-            privateKey =
-                    EncodingDecoding.loadPrivateKeyByStr("MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBAKIRy1Ayqp5COdLW9ToFc5pVOGFqdRw5PruPOLDbk25VQoQeNmCzX3g47PkhnTD1Qa3Ofn2ikHDLfb3lQpv2vZAsxdMVaHzzN5nsoXgss16ydiHDLQwheSdvqXGcnsN+fPkr6+AYl3Q7QuZNQkND7GeWCmSHvHaNWsMmCVxTkzRpAgMBAAECgYEAimdFyEwsdpA5zzsxGoaTTaYfStnd/udIEmZh1G7/fYakEi225GfqTMHYZXz2P1wC5cnlLadJUHoG/McvVf+lq3+6ph2pA6wHI4bvMSPS9SoLkcLNiggcqAKnySu2X9ZNCEza+NGMj726IxsyxB7+3PCzSfiiwzv3JvxkyA614AECQQDen/yaEpO0F+mh4aQe6e9pj2xjJuLb7sooDDFOJaotxnY/1aaNdongbqA2j7HeBf6isv19F+w+nWKWXLVoOTQBAkEAul3HsmFH5z8fwiv+B9AGrK6vfbadBqlTeK1gMxqDPDUuDMNbW4rPRlCXEBaoUMSFRDFNMrfFPejnn5tu1pzgaQJBANvj8kDMcI/FvsJieRT/w7XkMA6PbiwF5C9CO8EQetLT4CCVCvlXSEAhhKXfsLO4ABb77F0OsA34rlQOJjBXsAECQQCS+cS07D2NpN3B/3nO5YNuCjICfdMm3sEiqfD1PJKFGBeiHytcbYN8G7CXEpdZYzMKjaspNX8LjTOmTynBfWUJAkEAtWOybjlu0zLSiC3gTTyK1Q+aS1eLji/a9l/XdG7L9dQ0fEpfB8XTtUQdmmt3vDAe3qwyV5t/vJkfZOrHY+yIYg==");
-            serial_number =
-                    new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(serial_number))), StandardCharsets.UTF_8);
-            revoke_pwd =
-                    new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(revoke_pwd))), StandardCharsets.UTF_8);
+            privateKey = EncodingDecoding.loadPrivateKeyByStr("MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBAKIRy1Ayqp5COdLW9ToFc5pVOGFqdRw5PruPOLDbk25VQoQeNmCzX3g47PkhnTD1Qa3Ofn2ikHDLfb3lQpv2vZAsxdMVaHzzN5nsoXgss16ydiHDLQwheSdvqXGcnsN+fPkr6+AYl3Q7QuZNQkND7GeWCmSHvHaNWsMmCVxTkzRpAgMBAAECgYEAimdFyEwsdpA5zzsxGoaTTaYfStnd/udIEmZh1G7/fYakEi225GfqTMHYZXz2P1wC5cnlLadJUHoG/McvVf+lq3+6ph2pA6wHI4bvMSPS9SoLkcLNiggcqAKnySu2X9ZNCEza+NGMj726IxsyxB7+3PCzSfiiwzv3JvxkyA614AECQQDen/yaEpO0F+mh4aQe6e9pj2xjJuLb7sooDDFOJaotxnY/1aaNdongbqA2j7HeBf6isv19F+w+nWKWXLVoOTQBAkEAul3HsmFH5z8fwiv+B9AGrK6vfbadBqlTeK1gMxqDPDUuDMNbW4rPRlCXEBaoUMSFRDFNMrfFPejnn5tu1pzgaQJBANvj8kDMcI/FvsJieRT/w7XkMA6PbiwF5C9CO8EQetLT4CCVCvlXSEAhhKXfsLO4ABb77F0OsA34rlQOJjBXsAECQQCS+cS07D2NpN3B/3nO5YNuCjICfdMm3sEiqfD1PJKFGBeiHytcbYN8G7CXEpdZYzMKjaspNX8LjTOmTynBfWUJAkEAtWOybjlu0zLSiC3gTTyK1Q+aS1eLji/a9l/XdG7L9dQ0fEpfB8XTtUQdmmt3vDAe3qwyV5t/vJkfZOrHY+yIYg==");
+            serial_number = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(serial_number))), StandardCharsets.UTF_8);
+            revoke_pwd = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(revoke_pwd))), StandardCharsets.UTF_8);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (!Objects.requireNonNull(SHADigest.getDigest(serial_number)).equalsIgnoreCase(sign_serial_number)
-                || !Objects.requireNonNull(SHADigest.getDigest(revoke_pwd)).equalsIgnoreCase(sign_revoke_pwd)) {
+        if (!Objects.requireNonNull(SHADigest.getDigest(serial_number)).equalsIgnoreCase(sign_serial_number) || !Objects.requireNonNull(SHADigest.getDigest(revoke_pwd)).equalsIgnoreCase(sign_revoke_pwd)) {
             request.setAttribute("msg", "消息已损坏！");
             request.getRequestDispatcher("revoke_cer.jsp").forward(request, response);
             return;
