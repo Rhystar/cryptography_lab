@@ -2,6 +2,7 @@ package com.bean;
 
 import java.util.*;
 
+/*
 public class Certificate {
     private String VersionNumber;
     private String SerialNumber;
@@ -176,4 +177,60 @@ class SubjectPublicKeyInfo {
         return PublicKey;
     }
 }
+*/
 
+public class Certificate {
+    private String SerialNumber;
+    private String Path;
+    private Date NotBefore;
+    private Date NotAfter;
+    private String Username;
+
+    public Certificate(String SerialNumber, String Path, Date NotBefore, Date NotAfter, String Username) {
+        this.SerialNumber = SerialNumber;
+        this.Path = Path;
+        this.NotBefore = NotBefore;
+        this.NotAfter = NotAfter;
+        this.Username = Username;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        SerialNumber = serialNumber;
+    }
+
+    public void setPath(String path) {
+        Path = path;
+    }
+
+    public void setNotBefore(Date notBefore) {
+        NotBefore = notBefore;
+    }
+
+    public void setNotAfter(Date notAfter) {
+        NotAfter = notAfter;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
+    public String getSerialNumber() {
+        return SerialNumber;
+    }
+
+    public String getPath() {
+        return Path;
+    }
+
+    public Date getNotBefore() {
+        return NotBefore;
+    }
+
+    public Date getNotAfter() {
+        return NotAfter;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+}

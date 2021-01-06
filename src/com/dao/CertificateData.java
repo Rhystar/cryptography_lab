@@ -11,6 +11,7 @@ import java.util.List;
 import static com.util.labDatabase.*;
 
 public class CertificateData {
+    /*
     public boolean register(Certificate ca, String path) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Connection DBConnection = getLabConnection();
@@ -36,7 +37,23 @@ public class CertificateData {
         closeConnection(DBConnection);
         return flag1 == 1 && flag2 == 1;
     }
+    */
 
+    public boolean register(Certificate ca) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Connection DBConnection = getLabConnection();
+        String sql = "INSERT INTO certificate (SerialNumber, Path, NotBefore, NotAfter, Username) VALUES (" +
+                "'" + ca.getSerialNumber() + "', " +
+                "'" + ca.getPath() + "', " +
+                "'" + sdf.format(ca.getNotBefore()) + "', " +
+                "'" + sdf.format(ca.getNotAfter()) + "', " +
+                "'" + ca.getUsername() + "');";
+        int flag = operateDatabase(DBConnection, sql);
+        closeConnection(DBConnection);
+        return flag == 1;
+    }
+
+    /*
     public boolean revoke(String SerialNumber) {
         Connection DBConnection = getLabConnection();
         String sql = "SELECT * FROM certificate WHERE SerialNumber='" + SerialNumber + "';";
@@ -70,14 +87,38 @@ public class CertificateData {
             closeResultSet(Result);
         }
     }
+     */
 
-    public String getCAPath(String SerialNumber) {
+    public boolean revoke(String SerialNumber) {
         Connection DBConnection = getLabConnection();
-        String sql = "SELECT * FROM capath WHERE SerialNumber='" + SerialNumber + "';";
+        String sql = "SELECT * FROM certificate WHERE SerialNumber='" + SerialNumber + "';";
         ResultSet Result = getResultSet(DBConnection, sql);
         try {
             if (Result.next()) {
-                return Result.getString("path");
+                String insert = "INSERT INTO crl (SerialNumber, Path, NotBefore, NotAfter, Username) VALUES (" +
+                        "'" + SerialNumber + "', " +
+                        "'" + Result.getString("Path") + "', " +
+                        "'" + Result.getString("NotBefore") + "', " +
+                        "'" + Result.getString("NotAfter") + "', " +
+                        "'" + Result.getString("Username") + "');";
+                int flag = operateDatabase(DBConnection, insert);
+                return flag == 1;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public String getCAPath(String SerialNumber) {
+        Connection DBConnection = getLabConnection();
+        String sql = "SELECT * FROM certificate WHERE SerialNumber='" + SerialNumber + "';";
+        ResultSet Result = getResultSet(DBConnection, sql);
+        try {
+            if (Result.next()) {
+                return Result.getString("Path");
             } else {
                 return null;
             }
@@ -99,17 +140,11 @@ public class CertificateData {
         try {
             while (Result.next()) {
                 Certificate ca = new Certificate(
-                        Result.getString("VersionNumber"),
                         Result.getString("SerialNumber"),
-                        Result.getString("SignatureAlgorithmID"),
-                        Result.getString("IssuerName"),
+                        Result.getString("Path"),
                         sdf.parse(Result.getString("NotBefore")),
                         sdf.parse(Result.getString("NotAfter")),
-                        Result.getString("SubjectName"),
-                        Result.getString("PublicKeyAlgorithm"),
-                        Result.getString("PublicKey"),
-                        Result.getString("CertificateSignatureAlgorithm"),
-                        Result.getString("CertificateSignature")
+                        Result.getString("Username")
                 );
                 Crl.add(ca);
             }
@@ -127,7 +162,7 @@ public class CertificateData {
         return getCertificates("crl");
     }
 
-    public List<Certificate> getAllCA() {
+    public List<Certificate> getAllCa() {
         return getCertificates("certificate");
     }
 }
