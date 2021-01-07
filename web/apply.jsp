@@ -26,16 +26,16 @@
 
 <!-- Body -->
 <body>
-<span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
-20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
+<span style="text-align: right; font-family: 微软雅黑; font-weight: bold; font-size: 20px; margin-top:
+20px; margin-right: 20px; color: #000000"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<a href="/tw/home.jsp"
-   style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
+<a href="/cryptography_lab_war_exploded/home.jsp"
+   style="text-align: right; font-family: 微软雅黑; font-weight: normal; font-size:
    20px; margin-top:
-   20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
+   20px; margin-right: 20px; color: #000000">返回主页</a>
 <h1>数字证书认证中心</h1>
 <div class="container w3layouts agileits" style="width: 40%;">
-    <form action="/tw/applyServlet" method="post" id="apply_form">
+    <form action="/cryptography_lab_war_exploded/applyServlet" method="post" id="apply_form">
         <input type="text" name="organization" id="organization" placeholder="组织机构" required="">
         <input type="text" name="sign_organization" id="sign_organization" style="display: none">
         <input type="text" name="registration_number" id="registration_number" placeholder="工商注册号" required="">
@@ -87,7 +87,8 @@
     });
 
     function apply_encrypt() {
-        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        //var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_organization = encrypt.encrypt(organization.value);

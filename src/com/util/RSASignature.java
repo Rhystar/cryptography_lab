@@ -14,7 +14,7 @@ public class RSASignature {
      * RSA签名
      *
      * @param content    待签名数据
-     * @param privateKey 商户私钥
+     * @param privateKey 私钥
      * @param encode     字符集编码
      * @return 签名值
      */
@@ -55,7 +55,7 @@ public class RSASignature {
      *
      * @param content   待签名数据
      * @param sign      签名值
-     * @param publicKey 分配给开发商公钥
+     * @param publicKey 公钥
      * @param encode    字符集编码
      * @return 布尔值
      */

@@ -66,7 +66,7 @@
 
     <div class="login w3layouts agileits">
         <h2>登 录</h2>
-        <form action="/tw/loginServlet" id="login_form" method="post">
+        <form action="/cryptography_lab_war_exploded/loginServlet" id="login_form" method="post">
             <input type="text" name="username" id="login_username" placeholder="用户名" required="">
             <input type="text" name="sign_username" id="login_sign_username" style="display: none">
             <input type="password" name="password" id="login_password" placeholder="密码" required="">
@@ -82,7 +82,7 @@
 
     <div class="register w3layouts agileits">
         <h2>注 册</h2>
-        <form action="/tw/registerServlet" id="register_form" method="post">
+        <form action="/cryptography_lab_war_exploded/registerServlet" id="register_form" method="post">
             <input type="text" name="username" id="register_username" placeholder="用户名" required="">
             <input type="text" name="sign_username" id="reg_sign_username" required="" style="display: none">
             <input type="password" name="password" id="register_password" placeholder="密码" required="" onkeyup="CheckIntensity(this.value)">
@@ -132,7 +132,8 @@
     });
 
     function reg_encrypt() {
-        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        //var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_username = encrypt.encrypt(register_username.value);
@@ -158,8 +159,8 @@
     });
 
     function login_encrypt() {
-        var publicKey =
-            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        // var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
+        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_username = encrypt.encrypt(login_username.value);

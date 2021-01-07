@@ -20,7 +20,7 @@
         }
 
         function applyJump() {
-            window.location.href = "/tw/apply.jsp";
+            window.location.href = "/cryptography_lab_war_exploded/apply.jsp";
         }
 
         function downloadJump() {
@@ -46,8 +46,8 @@
 
 <!-- Body -->
 <body>
-<span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
-20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
+<span style="text-align: right; font-family: 微软雅黑; font-weight: bold; font-size: 20px; margin-top:
+20px; margin-right: 20px; color: #000000"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
 <h1>数字证书认证中心</h1>
 
@@ -58,7 +58,7 @@
                 <input type="submit" value="申 请 证 书" onclick="applyJump()">
             </li>
             <li>
-                <form action="/tw/downloadGenServlet?filename=genkey.exe" method="post">
+                <form action="/cryptography_lab_war_exploded/downloadGenServlet?filename=genkey.exe" method="post">
                     <input type="submit" value="密 钥 生 成 器">
                 </form>
             </li>
@@ -69,12 +69,12 @@
                 <input type="submit" value="撤 销 证 书" onclick="revokeJump()">
             </li>
             <li>
-                <form action="/tw/downloadCRLServlet?filename=crl.xml" method="post">
+                <form action="/cryptography_lab_war_exploded/downloadCRLServlet?filename=crl.xml" method="post">
                     <input type="submit" value="下 载 CRL">
                 </form>
             </li>
             <li>
-                <form action="/tw/logoutServlet" method="post">
+                <form action="/cryptography_lab_war_exploded/logoutServlet" method="post">
                     <input type="submit" value="退 出 登 录">
                 </form>
             </li>

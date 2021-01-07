@@ -25,16 +25,16 @@
 
 <!-- Body -->
 <body>
-<span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
-20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
+<span style="text-align: right; font-family: 微软雅黑; font-weight: bold; font-size: 20px; margin-top:
+20px; margin-right: 20px; color: #000000"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<a href="/tw/home.jsp"
-   style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
+<a href="/cryptography_lab_war_exploded/home.jsp"
+   style="text-align: right; font-family: 微软雅黑; font-weight: normal; font-size:
    20px; margin-top:
-   20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
+   20px; margin-right: 20px; color: #000000">返回主页</a>
 <h1>数字证书认证中心</h1>
 <div class="container" style="width: 40%;">
-    <form action="/tw/revokeCerServlet" method="post" id="revoke_form">
+    <form action="/cryptography_lab_war_exploded/revokeCerServlet" method="post" id="revoke_form">
         <input type="text" name="serial_number" id="serial_number" placeholder="证书序列号" required="">
         <input type="text" name="sign_serial_number" id="sign_serial_number" style="display: none">
         <input type="password" name="revoke_pwd" id="revoke_pwd" placeholder="密码" required="">
@@ -71,7 +71,8 @@
     });
 
     function revoke_encrypt() {
-        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiEctQMqqeQjnS1vU6BXOaVThhanUcOT67jziw25NuVUKEHjZgs194OOz5IZ0w9UGtzn59opBwy3295UKb9r2QLMXTFWh88zeZ7KF4LLNesnYhwy0MIXknb6lxnJ7Dfnz5K+vgGJd0O0LmTUJDQ+xnlgpkh7x2jVrDJglcU5M0aQIDAQAB";
+        //var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiEctQMqqeQjnS1vU6BXOaVThhanUcOT67jziw25NuVUKEHjZgs194OOz5IZ0w9UGtzn59opBwy3295UKb9r2QLMXTFWh88zeZ7KF4LLNesnYhwy0MIXknb6lxnJ7Dfnz5K+vgGJd0O0LmTUJDQ+xnlgpkh7x2jVrDJglcU5M0aQIDAQAB";
+        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_serial_number = encrypt.encrypt(serial_number.value);

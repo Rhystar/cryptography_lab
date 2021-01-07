@@ -19,13 +19,13 @@
 
 <!-- Body -->
 <body>
-<span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
-20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
+<span style="text-align: right; font-family: 微软雅黑; font-weight: bold; font-size: 20px; margin-top:
+20px; margin-right: 20px; color: #000000"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<a href="/tw/home.jsp"
-   style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
+<a href="/cryptography_lab_war_exploded/home.jsp"
+   style="text-align: right; font-family: 微软雅黑; font-weight: normal; font-size:
    20px; margin-top:
-   20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
+   20px; margin-right: 20px; color: #000000">返回主页</a>
 <h1>数字证书认证中心</h1>
 <div class="container" style="width: 40%;">
     <h3>证书申请成功！</h3>
