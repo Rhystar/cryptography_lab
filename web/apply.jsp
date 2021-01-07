@@ -87,7 +87,6 @@
     });
 
     function apply_encrypt() {
-        //var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
         var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
@@ -97,7 +96,6 @@
         var enc_charge_person = encrypt.encrypt(charge_person.value);
         var enc_charge_phone = encrypt.encrypt(charge_phone.value);
         var enc_ttl = encrypt.encrypt(ttl.value);
-        // var enc_pk = encrypt.encrypt(pk.value);
         var sign_organization = hex_sha256(organization.value);
         var sign_registration_number = hex_sha256(registration_number.value);
         var sign_juridical_person = hex_sha256(juridical_person.value);
@@ -111,7 +109,6 @@
         charge_person.value = enc_charge_person;
         charge_phone.value = enc_charge_phone;
         ttl.value = enc_ttl;
-        // pk.value = enc_pk;
         this.sign_organization.value = sign_organization;
         this.sign_registration_number.value = sign_registration_number;
         this.sign_juridical_person.value = sign_juridical_person;
