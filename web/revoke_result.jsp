@@ -4,7 +4,7 @@
 <!-- Head -->
 <head>
 
-    <title>哥谭市数字证书认证中心</title>
+    <title>数字证书认证中心</title>
 
     <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
    style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
    20px; margin-top:
    20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
-<h1>哥谭市数字证书认证中心</h1>
+<h1>数字证书认证中心</h1>
 <div class="container" style="width: 40%;">
     <h3><%=request.getAttribute("msg")%></h3>
     <p>

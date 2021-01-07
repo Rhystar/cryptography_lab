@@ -4,7 +4,7 @@
 <!-- Head -->
 <head>
 
-    <title>哥谭市数字证书认证中心</title>
+    <title>数字证书认证中心</title>
 
     <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
    style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
    20px; margin-top:
    20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
-<h1>哥谭市数字证书认证中心</h1>
+<h1>数字证书认证中心</h1>
 <div class="container" style="width: 40%;">
     <form action="/tw/revokeCerServlet" method="post" id="revoke_form">
         <input type="text" name="serial_number" id="serial_number" placeholder="证书序列号" required="">

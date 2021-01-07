@@ -4,7 +4,7 @@
 <!-- Head -->
 <head>
 
-    <title>哥谭市数字证书认证中心</title>
+    <title>数字证书认证中心</title>
 
     <!-- Meta-Tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +49,7 @@
 <span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
 20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<h1>哥谭市数字证书认证中心</h1>
+<h1>数字证书认证中心</h1>
 
 <div class="item-container">
     <div class="item-button">
