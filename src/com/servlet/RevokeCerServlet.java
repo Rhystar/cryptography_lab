@@ -91,7 +91,6 @@ public class RevokeCerServlet extends HttpServlet {
             bufferedWriter.close();
             fileWriter.close();
             request.setAttribute("serial_number", serial_number);
-            request.setAttribute("organization", certificateDao.getCa("serial_number").getUsername());
             request.getRequestDispatcher("revoke_result.jsp").forward(request, response);
         } else {
             request.setAttribute("msg", "此证书不存在或已失效！");

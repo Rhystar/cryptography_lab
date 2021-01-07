@@ -28,10 +28,10 @@
 <span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
 20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<a href="/tw/logoutServlet"
+<a href="/tw/home.jsp"
    style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
    20px; margin-top:
-   20px; margin-right: 20px; color: #FFFFFF">退出登录</a>
+   20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
 <h1>哥谭市数字证书认证中心</h1>
 <div class="container" style="width: 40%;">
     <form action="/tw/revokeCerServlet" method="post" id="revoke_form">
@@ -71,8 +71,7 @@
     });
 
     function revoke_encrypt() {
-        var publicKey =
-            "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiEctQMqqeQjnS1vU6BXOaVThhanUcOT67jziw25NuVUKEHjZgs194OOz5IZ0w9UGtzn59opBwy3295UKb9r2QLMXTFWh88zeZ7KF4LLNesnYhwy0MIXknb6lxnJ7Dfnz5K+vgGJd0O0LmTUJDQ+xnlgpkh7x2jVrDJglcU5M0aQIDAQAB";
+        var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiEctQMqqeQjnS1vU6BXOaVThhanUcOT67jziw25NuVUKEHjZgs194OOz5IZ0w9UGtzn59opBwy3295UKb9r2QLMXTFWh88zeZ7KF4LLNesnYhwy0MIXknb6lxnJ7Dfnz5K+vgGJd0O0LmTUJDQ+xnlgpkh7x2jVrDJglcU5M0aQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_serial_number = encrypt.encrypt(serial_number.value);

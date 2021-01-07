@@ -49,10 +49,6 @@
 <span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
 20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<a href="/tw/logoutServlet"
-   style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
-   20px; margin-top:
-   20px; margin-right: 20px; color: #FFFFFF">退出登录</a>
 <h1>哥谭市数字证书认证中心</h1>
 
 <div class="item-container">
@@ -78,8 +74,8 @@
                 </form>
             </li>
             <li>
-                <form action="/tw/certificateInfoServlet" method="post">
-                    <input type="submit" value="查 看 证 书">
+                <form action="/tw/logoutServlet" method="post">
+                    <input type="submit" value="退 出 登 录">
                 </form>
             </li>
         </ul>

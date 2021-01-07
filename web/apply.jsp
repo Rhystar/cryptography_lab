@@ -29,10 +29,10 @@
 <span style="text-align: right; font-family: 楷体; font-weight: bold; font-size: 20px; margin-top:
 20px; margin-right: 20px; color: #FFFFFF"><%=request.getSession().getAttribute("username")%>，欢迎您</span>
 <br>
-<a href="/tw/logoutServlet"
+<a href="/tw/home.jsp"
    style="text-align: right; font-family: 楷体; font-weight: normal; font-size:
    20px; margin-top:
-   20px; margin-right: 20px; color: #FFFFFF">退出登录</a>
+   20px; margin-right: 20px; color: #FFFFFF">返回主页</a>
 <h1>数字证书认证中心</h1>
 <div class="container w3layouts agileits" style="width: 40%;">
     <form action="/tw/applyServlet" method="post" id="apply_form">
