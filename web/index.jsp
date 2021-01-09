@@ -132,7 +132,6 @@
     });
 
     function reg_encrypt() {
-        //var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
         var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
@@ -159,7 +158,6 @@
     });
 
     function login_encrypt() {
-        // var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9GOFeR0gN2Yg8pyl9G31Xa/Ryg+sxKpVr4DM6hv21wSa+YzHqd2fEZHPsXl+k8BoEMoOxuZmiGA4cLSV5tWsVaF8WOYAAL/L0CXgvVKH4BJczfk8HpXQuN3VHMClgpx84pmNoJHUqN2kO/HAdcv7xn1Y7koAaxuQFiCqv3oNUpQIDAQAB";
         var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);

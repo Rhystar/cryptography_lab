@@ -6,6 +6,6 @@ import static com.util.Database.getConnection;
 
 public class labDatabase extends Database {
     public static Connection getLabConnection() {
-        return getConnection("172.17.27.26", "3306", "rhystar", "raspberry", "cryptography_lab");
+        return getConnection("192.168.50.162", "3306", "rhystar", "raspberry", "cryptography_lab");
     }
 }
