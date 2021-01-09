@@ -11,13 +11,13 @@ import static com.util.labDatabase.*;
 
 public class UserData {
     public boolean register(User newUser) {
-        String salt = UUID.randomUUID().toString();
-        PasswordEncryptor passwordEncryptor = new PasswordEncryptor(salt, "sha-256");
+        String uuid = UUID.randomUUID().toString();
+        PasswordEncryptor passwordEncryptor = new PasswordEncryptor(uuid, "sha-256");
         String Email = newUser.getEmail();
         String Password = passwordEncryptor.encode(newUser.getPassword());
         Connection DBConnection = getLabConnection();
         String sql = "INSERT INTO userdata (uuid, email, password) VALUES (" +
-                "'" + salt + "', " +
+                "'" + uuid + "', " +
                 "'" + Email + "', " +
                 "'" + Password + "');";
         int flag = operateDatabase(DBConnection, sql);
@@ -37,7 +37,7 @@ public class UserData {
             if (Result.next()) {
                 encPassword = Result.getString("password");
                 salt = Result.getString("uuid");
-                PasswordEncryptor passwordEncryptor = new PasswordEncryptor(salt, "sha-256"); // 生成加密器
+                PasswordEncryptor passwordEncryptor = new PasswordEncryptor(salt, "sha-256");
                 return passwordEncryptor.isPasswordValid(encPassword, rawPassword);
             } else {
                 return false;

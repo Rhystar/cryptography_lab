@@ -26,20 +26,6 @@
 
     </script>
 
-<%--    <script>--%>
-<%--        window.onload = function () {--%>
-<%--            try {--%>
-<%--                var objShell = new ActiveXObject("wscript.shell");--%>
-<%--                var strPath = "hxdrive.exe";--%>
-<%--                objShell.Run('"C:/Program Files/mimademo/hxdrive.exe"');--%>
-<%--                objShell = null;--%>
-
-<%--            } catch (e) {--%>
-<%--                alert('找不到文件"' + strPath + '"(或它的组件之一)。请确定路径和文件名是否正确.')--%>
-<%--            }--%>
-<%--        }--%>
-<%--    </script>--%>
-
     <!-- //Meta-Tags -->
 
     <!-- Style -->

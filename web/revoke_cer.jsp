@@ -71,7 +71,6 @@
     });
 
     function revoke_encrypt() {
-        //var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCiEctQMqqeQjnS1vU6BXOaVThhanUcOT67jziw25NuVUKEHjZgs194OOz5IZ0w9UGtzn59opBwy3295UKb9r2QLMXTFWh88zeZ7KF4LLNesnYhwy0MIXknb6lxnJ7Dfnz5K+vgGJd0O0LmTUJDQ+xnlgpkh7x2jVrDJglcU5M0aQIDAQAB";
         var publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmfmqCDHEsdjFQJ/14wxR/6fFqY9dDae39ZZyLB6l+5loeCgcEaxJBmepGcW+EBJlfKFAOpSZpijkpdKHhDvtmbyMvpzYeqUGp5Nuyq2tibKrzTSPFfvmDxu0BRBwWPGf3ADUBy60ztbUP20xj51VXi4Vxjk94e4JBqzYN3CRhvQIDAQAB";
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);

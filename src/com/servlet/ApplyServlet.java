@@ -31,7 +31,6 @@ public class ApplyServlet extends HttpServlet {
         RSAPrivateKey privateKey;
         try {
             privateKey = EncodingDecoding.loadPrivateKeyByStr("MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAOZ+aoIMcSx2MVAn/XjDFH/p8Wpj10Np7f1lnIsHqX7mWh4KBwRrEkGZ6kZxb4QEmV8oUA6lJmmKOSl0oeEO+2ZvIy+nNh6pQank27Kra2JsqvNNI8V++YPG7QFEHBY8Z/cANQHLrTO1tQ/bTGPnVVeLhXGOT3h7gkGrNg3cJGG9AgMBAAECgYBwItiWZI863lWndY0vj1kN0jcNV32G4qZSPXknepbPkioNqzs2vxCmscb0doOWatZjIS2xsk850XF15bRL1gogI1GPgvfoic4XabP3tqqnw/WV1vh3myjkr6oSSU3rlbGDCN6sYFTRqMJmOL+RSDCkU+5ww947DZ4d3QRXNYCkUQJBAPfVcR+XLo+0izDWuVe0rK6IeLsmat/YtA8B2XbhSrMh6y/cKiN9yk0aTWKcS2RLGJaK8BXXjzXCWuhLJAp7GasCQQDuFrTDGulHAcoDi28b4Fhsa27PqrKfo1VyXUgVbPxjboHKXBN/c7UYJwUvIHynH5lkZnm+fYIVZ66IUdADw5o3AkBGUY5mWzv/1EdGFTbDduUkJF61I0JhvxffxjOQsn3Cc9ZKXxqptVBILjVUzGnrzA7u7/8NA3uD0mB+1oskWic/AkAE0iLg3Heiv2+GuNkMGHPR5i79N3iccOM3CJqADI/jt4YbQdgHOaGOFqQtOxwrCiHB/a0zZTkwE8Rd8EIlAV3rAkEAuULX+i6UroEPhyvlt8xvBE8ooGHaUgHwrXuRiN1gLUaiGMMLqRWbYDM1ZiebIRfoKFk7REsgzBc9CfIz6mOFNw==");
-
             organization = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(organization))), StandardCharsets.UTF_8);
             charge_person = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(charge_person))), StandardCharsets.UTF_8);
             charge_phone = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(charge_phone))), StandardCharsets.UTF_8);
@@ -44,7 +43,6 @@ public class ApplyServlet extends HttpServlet {
                 || !Objects.requireNonNull(SHADigest.getDigest(charge_person)).equalsIgnoreCase(sign_charge_person)
                 || !Objects.requireNonNull(SHADigest.getDigest(charge_phone)).equalsIgnoreCase(sign_charge_phone)
                 || !Objects.requireNonNull(SHADigest.getDigest(ttl)).equalsIgnoreCase(sign_ttl)) {
-
             request.setAttribute("isApplied", "报文可能被损毁！");
             request.getRequestDispatcher("apply.jsp").forward(request, response);
             return;
@@ -61,7 +59,7 @@ public class ApplyServlet extends HttpServlet {
             cerLines.add("Serial Number: " + serial_number);
             cerLines.add("Sign Algorithm: sha1RSA");
             cerLines.add("Encrypt Algorithm: sha256");
-            cerLines.add("HIT CS CA 2019, " + "www.hit.edu.cn, " + "Harbin, " + "CN");
+            cerLines.add("HIT CS CA 2020, " + "www.hit.edu.cn, " + "Harbin, " + "CN");
             String[] valid_time = getTTL(Integer.parseInt(parameters.get("valid_time")));
             cerLines.add("Valid Time From: " + valid_time[0]);
             cerLines.add("Valid Time To: " + valid_time[1]);

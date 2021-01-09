@@ -42,7 +42,8 @@ public class RevokeCerServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (!Objects.requireNonNull(SHADigest.getDigest(serial_number)).equalsIgnoreCase(sign_serial_number) || !Objects.requireNonNull(SHADigest.getDigest(revoke_pwd)).equalsIgnoreCase(sign_revoke_pwd)) {
+        if (!Objects.requireNonNull(SHADigest.getDigest(serial_number)).equalsIgnoreCase(sign_serial_number)
+                || !Objects.requireNonNull(SHADigest.getDigest(revoke_pwd)).equalsIgnoreCase(sign_revoke_pwd)) {
             request.setAttribute("msg", "消息已损坏！");
             request.getRequestDispatcher("revoke_cer.jsp").forward(request, response);
             return;
@@ -55,7 +56,6 @@ public class RevokeCerServlet extends HttpServlet {
             request.getRequestDispatcher("revoke_cer.jsp").forward(request, response);
             return;
         }
-        // String[] revoke_msg = certificateDao.revoke(serial_number);
         boolean revoke_msg = certificateDao.revoke(serial_number);
         if (revoke_msg) {
             request.setAttribute("msg", "此证书已被成功撤销！");

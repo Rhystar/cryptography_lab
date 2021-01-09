@@ -31,7 +31,7 @@
     <h3>证书申请成功！</h3>
     <p>
         您的证书序列号为：<%=request.getAttribute("serial_number")%> <br>
-        组织机构：<%=request.getAttribute("organization")%> <br>
+        网站名：<%=request.getAttribute("organization")%> <br>
         申请人：<%=request.getAttribute("charge_person")%> <br>
         请您持有效证书序列号到证书下载地址下载证书。
     </p>
