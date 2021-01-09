@@ -36,15 +36,11 @@
 <h1>数字证书认证中心</h1>
 <div class="container w3layouts agileits" style="width: 40%;">
     <form action="/cryptography_lab_war_exploded/applyServlet" method="post" id="apply_form">
-        <input type="text" name="organization" id="organization" placeholder="组织机构" required="">
+        <input type="text" name="organization" id="organization" placeholder="网站名" required="">
         <input type="text" name="sign_organization" id="sign_organization" style="display: none">
-        <input type="text" name="registration_number" id="registration_number" placeholder="工商注册号" required="">
-        <input type="text" name="sign_registration_number" id="sign_registration_number" style="display: none">
-        <input type="text" name="juridical_person" id="juridical_person" placeholder="法人姓名" required="">
-        <input type="text" name="sign_juridical_person" id="sign_juridical_person" style="display: none">
-        <input type="text" name="charge_person" id="charge_person" placeholder="经办人姓名" required="">
+        <input type="text" name="charge_person" id="charge_person" placeholder="申请人姓名" required="">
         <input type="text" name="sign_charge_person" id="sign_charge_person" style="display: none">
-        <input type="text" name="charge_phone" id="charge_phone" placeholder="经办人电话" required="">
+        <input type="text" name="charge_phone" id="charge_phone" placeholder="申请人电话" required="">
         <input type="text" name="sign_charge_phone" id="sign_charge_phone" style="display: none">
         <input type="text" name="ttl" id="ttl" placeholder="有效时间（年）" required="">
         <input type="text" name="sign_ttl" id="sign_ttl" style="display: none">
@@ -61,15 +57,11 @@
 <script>
     var submit_btn = document.getElementById("submit_btn");
     var organization = document.getElementById("organization");
-    var registration_number = document.getElementById("registration_number");
-    var juridical_person = document.getElementById("juridical_person");
     var charge_person = document.getElementById("charge_person");
     var charge_phone = document.getElementById("charge_phone");
     var ttl = document.getElementById("ttl");
     var pk = document.getElementById("pk");
     var sign_organization = document.getElementById("sign_organization");
-    var sign_registration_number = document.getElementById("sign_registration_number");
-    var sign_juridical_person = document.getElementById("sign_juridical_person");
     var sign_charge_person = document.getElementById("sign_charge_person");
     var sign_charge_phone = document.getElementById("sign_charge_phone");
     var sign_ttl = document.getElementById("sign_ttl");
@@ -78,8 +70,6 @@
         apply_encrypt();
         document.getElementById("apply_form").submit();
         organization.value = "";
-        registration_number.value = "";
-        juridical_person.value = "";
         charge_person.value = "";
         charge_phone.value = "";
         ttl.value = "";
@@ -91,27 +81,19 @@
         var encrypt = new JSEncrypt();
         encrypt.setPublicKey(publicKey);
         var enc_organization = encrypt.encrypt(organization.value);
-        var enc_registration_number = encrypt.encrypt(registration_number.value);
-        var enc_juridical_person = encrypt.encrypt(juridical_person.value);
         var enc_charge_person = encrypt.encrypt(charge_person.value);
         var enc_charge_phone = encrypt.encrypt(charge_phone.value);
         var enc_ttl = encrypt.encrypt(ttl.value);
         var sign_organization = hex_sha256(organization.value);
-        var sign_registration_number = hex_sha256(registration_number.value);
-        var sign_juridical_person = hex_sha256(juridical_person.value);
         var sign_charge_person = hex_sha256(charge_person.value);
         var sign_charge_phone = hex_sha256(charge_phone.value);
         var sign_ttl = hex_sha256(ttl.value);
         var sign_pk = hex_sha256(pk.value);
         organization.value = enc_organization;
-        registration_number.value = enc_registration_number;
-        juridical_person.value = enc_juridical_person;
         charge_person.value = enc_charge_person;
         charge_phone.value = enc_charge_phone;
         ttl.value = enc_ttl;
         this.sign_organization.value = sign_organization;
-        this.sign_registration_number.value = sign_registration_number;
-        this.sign_juridical_person.value = sign_juridical_person;
         this.sign_charge_person.value = sign_charge_person;
         this.sign_charge_phone.value = sign_charge_phone;
         this.sign_ttl.value = sign_ttl;

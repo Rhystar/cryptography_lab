@@ -20,15 +20,12 @@ public class ApplyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         String organization = request.getParameter("organization");
-        String registration_number = request.getParameter("registration_number");
-        String juridical_person = request.getParameter("juridical_person");
         String charge_person = request.getParameter("charge_person");
         String charge_phone = request.getParameter("charge_phone");
         String ttl = request.getParameter("ttl");
         String pk = request.getParameter("pk");
         String sign_organization = request.getParameter("sign_organization");
         String sign_registration_number = request.getParameter("sign_registration_number");
-        String sign_juridical_person = request.getParameter("sign_juridical_person");
         String sign_charge_person = request.getParameter("sign_charge_person");
         String sign_charge_phone = request.getParameter("sign_charge_phone");
         String sign_ttl = request.getParameter("sign_ttl");
@@ -37,8 +34,6 @@ public class ApplyServlet extends HttpServlet {
             privateKey = EncodingDecoding.loadPrivateKeyByStr("MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAOZ+aoIMcSx2MVAn/XjDFH/p8Wpj10Np7f1lnIsHqX7mWh4KBwRrEkGZ6kZxb4QEmV8oUA6lJmmKOSl0oeEO+2ZvIy+nNh6pQank27Kra2JsqvNNI8V++YPG7QFEHBY8Z/cANQHLrTO1tQ/bTGPnVVeLhXGOT3h7gkGrNg3cJGG9AgMBAAECgYBwItiWZI863lWndY0vj1kN0jcNV32G4qZSPXknepbPkioNqzs2vxCmscb0doOWatZjIS2xsk850XF15bRL1gogI1GPgvfoic4XabP3tqqnw/WV1vh3myjkr6oSSU3rlbGDCN6sYFTRqMJmOL+RSDCkU+5ww947DZ4d3QRXNYCkUQJBAPfVcR+XLo+0izDWuVe0rK6IeLsmat/YtA8B2XbhSrMh6y/cKiN9yk0aTWKcS2RLGJaK8BXXjzXCWuhLJAp7GasCQQDuFrTDGulHAcoDi28b4Fhsa27PqrKfo1VyXUgVbPxjboHKXBN/c7UYJwUvIHynH5lkZnm+fYIVZ66IUdADw5o3AkBGUY5mWzv/1EdGFTbDduUkJF61I0JhvxffxjOQsn3Cc9ZKXxqptVBILjVUzGnrzA7u7/8NA3uD0mB+1oskWic/AkAE0iLg3Heiv2+GuNkMGHPR5i79N3iccOM3CJqADI/jt4YbQdgHOaGOFqQtOxwrCiHB/a0zZTkwE8Rd8EIlAV3rAkEAuULX+i6UroEPhyvlt8xvBE8ooGHaUgHwrXuRiN1gLUaiGMMLqRWbYDM1ZiebIRfoKFk7REsgzBc9CfIz6mOFNw==");
 
             organization = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(organization))), StandardCharsets.UTF_8);
-            registration_number = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(registration_number))), StandardCharsets.UTF_8);
-            juridical_person = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(juridical_person))), StandardCharsets.UTF_8);
             charge_person = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(charge_person))), StandardCharsets.UTF_8);
             charge_phone = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(charge_phone))), StandardCharsets.UTF_8);
             ttl = new String(Objects.requireNonNull(EncodingDecoding.decrypt(privateKey, Base64.getDecoder().decode(ttl))), StandardCharsets.UTF_8);
@@ -47,8 +42,6 @@ public class ApplyServlet extends HttpServlet {
         }
 
         if (!Objects.requireNonNull(SHADigest.getDigest(organization)).equalsIgnoreCase(sign_organization)
-                || !Objects.requireNonNull(SHADigest.getDigest(registration_number)).equalsIgnoreCase(sign_registration_number)
-                || !Objects.requireNonNull(SHADigest.getDigest(juridical_person)).equalsIgnoreCase(sign_juridical_person)
                 || !Objects.requireNonNull(SHADigest.getDigest(charge_person)).equalsIgnoreCase(sign_charge_person)
                 || !Objects.requireNonNull(SHADigest.getDigest(charge_phone)).equalsIgnoreCase(sign_charge_phone)
                 || !Objects.requireNonNull(SHADigest.getDigest(ttl)).equalsIgnoreCase(sign_ttl)) {
@@ -57,16 +50,12 @@ public class ApplyServlet extends HttpServlet {
             request.getRequestDispatcher("apply.jsp").forward(request, response);
             return;
         }
-        System.out.println("sha ok");
         Map<String, String> parameters = new HashMap<>();
         parameters.put("organization", organization);
-        parameters.put("registration_number", registration_number);
-        parameters.put("juridical_person", juridical_person);
         parameters.put("charge_person", charge_person);
         parameters.put("charge_phone", charge_phone);
         parameters.put("valid_time", ttl);
         parameters.put("public_key", pk);
-        System.out.println("put ok");
         try {
             String serial_number = getSerialNumber(new String[] {new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()), parameters.get("organization")});
             List<String> cerLines = new ArrayList<>();
