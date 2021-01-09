@@ -25,7 +25,6 @@ public class ApplyServlet extends HttpServlet {
         String ttl = request.getParameter("ttl");
         String pk = request.getParameter("pk");
         String sign_organization = request.getParameter("sign_organization");
-        String sign_registration_number = request.getParameter("sign_registration_number");
         String sign_charge_person = request.getParameter("sign_charge_person");
         String sign_charge_phone = request.getParameter("sign_charge_phone");
         String sign_ttl = request.getParameter("sign_ttl");
